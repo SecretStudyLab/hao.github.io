@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <style>
-    @keyframes jumping {
+    .jumping {
+      animation: jump 0.5s linear infinite;
+    }
+
+    @keyframes jump {
       0% {transform: translateY(0);}
       50% {transform: translateY(-20px);}
       100% {transform: translateY(0);}
     }
-
-    h2 {
-      animation: jumping 1s linear infinite;
-    }
   </style>
 </head>
-
 <body>
   <h1>Hiii guys I am Teh Jia Sheng</h1>
-  <h2>Welcome to my website Takumi 888!</h2>
-  <h2>Get ready for a gaming experience like no other! Use promo code 'TAKUMI888' when you deposit 888 and we'll supercharge your balance with an extra 8888! Don't wait, dive into the action now with this fantastic offer!</h2>
+  <h2 id="promo-text">Welcome to my website Takumi 888! Get ready for a gaming experience like no other!</h2>
 
-  <img src="https://content.codecademy.com/articles/github-pages-via-web-app/happy-ice-cream.gif" />
+  <script>
+    const text = document.getElementById('promo-text');
+    let splitText = text.innerText.split('');
+    text.innerText = '';
+
+    for(let i=0; i < splitText.length; i++) {
+      let span = document.createElement('span');
+      span.innerText = splitText[i];
+      span.style.animationDelay = `${i * 0.2}s`;
+      text.appendChild(span);
+    }
+  </script>
 </body>
-
 </html>
